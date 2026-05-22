@@ -8,11 +8,11 @@ Test MCP server in Kotlin using Ktor and the MCP Kotlin SDK.
 - MCP Streamable HTTP endpoint at `/mcp`
 - Tool: `space.missions`
   - Input: `query` (string)
-  - Returns static responses for common space mission queries:
-    - Apollo 11
-    - Voyager 1
-    - Artemis I
-    - James Webb Space Telescope
+  - Returns static (intentionally fictional) responses for these mission queries:
+    - Halcyon 3
+    - Drake-7
+    - Aurora Station
+    - Cassiopeia Array
 
 ## Run locally
 

@@ -20,10 +20,10 @@ import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonObject
 
 private val missionResponses = linkedMapOf(
-    "apollo 11" to "Apollo 11 (1969): First crewed Moon landing by NASA. Neil Armstrong and Buzz Aldrin walked on the lunar surface.",
-    "voyager 1" to "Voyager 1 (1977): Explored outer planets and became the first human-made object to enter interstellar space.",
-    "artemis i" to "Artemis I (2022): Uncrewed NASA mission that validated Orion and SLS for future crewed lunar missions.",
-    "james webb" to "James Webb Space Telescope (2021): Infrared observatory delivering deep-space observations and early-universe data."
+    "halcyon 3" to "Halcyon 3 (2029): Joint NASA/CNSA sample-return mission to asteroid 16 Psyche using a 12 kW nuclear-electric propulsion stage. Returned 412 g of metallic regolith to the Utah Test and Training Range in 2034.",
+    "drake-7" to "Drake-7 (2031): ESA interstellar precursor probe targeting the heliopause in the direction of Tau Ceti. Carries a tritium-fueled RTG cluster and a 14 m phased-array antenna; designed for a 47-year primary mission.",
+    "aurora station" to "Aurora Station (2032): First permanently crewed lunar south-pole base, operated by a Roscosmos-ISRO consortium. Houses a rotating crew of six in three pressurized regolith-shielded modules at Shackleton's western rim.",
+    "cassiopeia array" to "Cassiopeia Array (2033): Eight-element formation-flying X-ray interferometer stationed in a halo orbit around the Sun-Earth L5 point. Baseline of 1.2 km gives sub-microarcsecond angular resolution in the 0.5-10 keV band."
 )
 
 fun Application.mcpModule() {
@@ -53,7 +53,7 @@ private fun createServer(): Server {
             properties = buildJsonObject {
                 putJsonObject("query") {
                     put("type", "string")
-                    put("description", "Mission name or question, for example 'Apollo 11'.")
+                    put("description", "Mission name or question, for example 'Halcyon 3'.")
                 }
             },
             required = listOf("query"),
@@ -62,7 +62,7 @@ private fun createServer(): Server {
         val query = request.arguments?.get("query")?.jsonPrimitive?.content.orEmpty()
         val answer = missionResponses.entries.firstOrNull { (key, _) ->
             query.contains(key, ignoreCase = true)
-        }?.value ?: "Known missions: Apollo 11, Voyager 1, Artemis I, James Webb Space Telescope."
+        }?.value ?: "Known missions: Halcyon 3, Drake-7, Aurora Station, Cassiopeia Array."
 
         CallToolResult(content = listOf(TextContent(answer)))
     }

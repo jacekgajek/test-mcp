@@ -51,12 +51,12 @@ class AppTest {
     suspend fun `space missions tool returns mission specific response`() {
         val result = mcpClient.callTool(
             name = "space.missions",
-            arguments = mapOf("query" to "Tell me about Voyager 1"),
+            arguments = mapOf("query" to "Tell me about Drake-7"),
         )
         val content = result.content.single()
         assertIs<TextContent>(content)
         assertEquals(
-            "Voyager 1 (1977): Explored outer planets and became the first human-made object to enter interstellar space.",
+            "Drake-7 (2031): ESA interstellar precursor probe targeting the heliopause in the direction of Tau Ceti. Carries a tritium-fueled RTG cluster and a 14 m phased-array antenna; designed for a 47-year primary mission.",
             content.text,
         )
     }
@@ -70,7 +70,7 @@ class AppTest {
         val content = result.content.single()
         assertIs<TextContent>(content)
         assertEquals(
-            "Known missions: Apollo 11, Voyager 1, Artemis I, James Webb Space Telescope.",
+            "Known missions: Halcyon 3, Drake-7, Aurora Station, Cassiopeia Array.",
             content.text,
         )
     }
