@@ -1,0 +1,4 @@
+aws_region                 = "us-east-1"
+service_name               = "space-missions-mcp"
+container_image_identifier = "public.ecr.aws/<your-alias>/space-mcp:latest"
+container_port             = 3000
